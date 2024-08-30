@@ -1,0 +1,51 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <AzureFunctionsVersion>v4</AzureFunctionsVersion>
+      <CodeAnalysisRuleSet>..\..\..\..\stylecoprules\stylecop.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+    <PackageReference Include="Azure.Identity" Version="1.8.2" />
+    <PackageReference Include="FluentValidation" Version="11.5.1" />
+    <PackageReference Include="Lueben.Microservice.Extensions.Configuration" Version="2.0.1" />
+    <PackageReference Include="Lueben.Microservice.FileLogging" Version="2.0.1" />
+    <PackageReference Include="Lueben.Microservice.Mediator" Version="2.0.1" />
+    <PackageReference Include="Lueben.Microservice.OpenApi" Version="3.0.1" />
+    <PackageReference Include="Lueben.Microservice.OpenApi.Version" Version="3.0.3" />
+    <PackageReference Include="Lueben.Microservice.OpenApi.Visitors" Version="3.0.1" />
+    <PackageReference Include="Lueben.Microservice.Options" Version="2.0.1" />
+    <PackageReference Include="Lueben.Microservice.Serialization" Version="2.0.0" />
+    <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="4.1.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Lueben.Templates.Microservice.Functions.Logging\Lueben.Templates.Microservice.Functions.Logging.csproj" />
+    <ProjectReference Include="..\..\Domain\Lueben.Templates.Microservice.Domain\Lueben.Templates.Microservice.Domain.csproj" />
+    <ProjectReference Include="..\Lueben.Templates.Microservice.Api.Contract\Lueben.Templates.Microservice.Api.Contract.csproj" />
+    <ProjectReference Include="..\Lueben.Templates.Microservice.App\Lueben.Templates.Microservice.App.csproj" />
+<!--#if (Cosmos)-->
+    <ProjectReference Include="..\Lueben.Templates.Microservice.Data.CosmosDb\Lueben.Templates.Microservice.Data.CosmosDb.csproj" />
+<!--#endif-->
+<!--#if (Sql)-->
+    <ProjectReference Include="..\Lueben.Templates.Microservice.Data.Sql\Lueben.Templates.Microservice.Data.Sql.csproj" />
+<!--#endif-->
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="host.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="local.settings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+    </None>
+    <None Update="openapisettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>

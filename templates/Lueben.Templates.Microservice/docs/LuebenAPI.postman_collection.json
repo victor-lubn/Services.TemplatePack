@@ -1,0 +1,235 @@
+{
+	"info": {
+		"_postman_id": "8c2fc701-ff5d-4066-9962-4c1876bd3d91",
+		"name": "LuebenAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all applications",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Lueben-Request-Consumer",
+						"value": "value",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/OnlineApplication/applications",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"OnlineApplication",
+						"applications"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get application by id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Lueben-Request-Consumer",
+						"value": "value",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/OnlineApplication/application/1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"OnlineApplication",
+						"application",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete application",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Lueben-Request-Consumer",
+						"value": "value",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/OnlineApplication/application/1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"OnlineApplication",
+						"application",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update application",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Lueben-Request-Consumer",
+						"value": "value",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"preferredDepotId\": \"2\",\n    \"comments\": \"edited\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/OnlineApplication/application/1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"OnlineApplication",
+						"application",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get version",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/version",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"version"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create application",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Lueben-Request-Consumer",
+						"value": "value",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"preferredDepotId\": \"2\",\n    \"comments\": \"new comment\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/OnlineApplication/application",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"OnlineApplication",
+						"application"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Partially update application",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Lueben-Request-Consumer",
+						"value": "value",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"preferredDepotId\": \"2\",\n    \"comments\": \"edited\",\n    \"rejectionReason\": \"edited\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/OnlineApplication/application/1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"OnlineApplication",
+						"application",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

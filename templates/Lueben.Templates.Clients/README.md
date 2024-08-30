@@ -1,0 +1,1 @@
+Interfaces and stub for dependency examples.

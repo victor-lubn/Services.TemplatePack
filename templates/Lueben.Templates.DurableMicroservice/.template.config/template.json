@@ -1,0 +1,64 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Lueben",
+  "classifications": [ "Lueben", "Microservices", "Durable" ],
+  "name": "DurableMicroservice",
+  "identity": "Lueben.Templates.DurableMicroservice",
+  "groupIdentity": "Lueben.Templates.DurableMicroservice",
+  "shortName": "hwnms",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sourceName": "Lueben.Templates.DurableMicroservice",
+  "preferNameDirectory": true,
+  "primaryOutputs": [
+    {
+      "path": "Lueben.Templates.DurableMicroservice.Function/Lueben.Templates.DurableMicroservice.Function.csproj"
+    },
+    {
+      "path": "Lueben.Templates.DurableMicroservice.Tests/Lueben.Templates.DurableMicroservice.Function.Tests.csproj"
+    }
+  ],
+  "symbols": {
+    "includetests": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "true"
+    },
+    "title": {
+      "type": "parameter",
+      "defaultValue": "Template",
+      "FileRename": "DurableMicroservice",
+      "replaces": "DurableMicroservice"
+    }
+  },
+  "sources": [
+    {
+      "modifiers": [
+        {
+          "condition": "(!includetests)",
+          "exclude": [ "*.Tests/**/*" ]
+        },
+        {
+          "exclude": [ ".vs/**", "*.user" ]
+        }
+      ]
+    }
+  ],
+  "postActions": [
+    {
+      "description": "Add projects to solution",
+      "manualInstructions": [
+        {
+          "text": "Run post action 'Add projects to a solution file'"
+        }
+      ],
+      "args": {
+        "primaryOutputIndexes": "0;1"
+      },
+      "actionId": "D396686C-DE0E-4DE6-906D-291CD29FC5DE",
+      "continueOnError": true
+    }
+  ]
+}

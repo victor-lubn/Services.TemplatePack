@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Lueben",
+  "classifications": [ "Lueben", "CodeAnalysis" ],
+  "identity": "Lueben.Template.StyleCop",
+  "name": "Stylecop rules set",
+  "shortName": "hwnstylecop",
+  "tags": {
+    "type": "item"
+  }
+}

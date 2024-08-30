@@ -1,0 +1,13 @@
+{
+  "info": {
+    "version": "0.0.1",
+    "title": "Lueben Template Application API",
+    "description": "Lueben API that runs on Azure Functions",
+    "termsOfService": "",
+    "contact": {
+      "name": "Lueben",
+      "email": "dev@Lueben.com",
+      "url": ""
+    }
+  }
+}

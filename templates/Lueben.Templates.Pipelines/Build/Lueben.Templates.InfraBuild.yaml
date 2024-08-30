@@ -1,0 +1,29 @@
+parameters:
+- name: gitversion  # defaults for any parameters that aren't specified
+  default: '5.x'
+- name: ListOfFiles
+  type: object
+  default: {}
+    
+steps:
+- task: gitversion/setup@0
+  inputs:
+    versionSpec: ${{ parameters.gitversion }}
+
+- task: gitversion/execute@0
+  inputs:
+    updateAssemblyInfo: false
+
+- ${{ each value in parameters.ListOfFiles }}:
+  - task: CopyFiles@2
+    displayName: 'Copy ${{ value }} files'
+    inputs:
+      SourceFolder: deployment/${{ value }}
+      TargetFolder: ${{ value }}
+
+- ${{ each value in parameters.ListOfFiles }}:
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact: ${{ value }}'
+    inputs:
+      PathtoPublish: ${{ value }}
+      ArtifactName: ${{ value }}

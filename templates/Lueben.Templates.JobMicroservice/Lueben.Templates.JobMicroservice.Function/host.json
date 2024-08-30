@@ -1,0 +1,23 @@
+{
+  "version": "2.0",
+  "logging": {
+    "applicationInsights": {
+      "samplingSettings": {
+        "isEnabled": true,
+        "excludedTypes": "Request"
+      }
+    }
+  },
+  "extensions": {
+    "http": {
+      "routePrefix": "" /* to avoid api prefix in force function*/
+    },
+    "durableTask": {
+      "hubName": "JobMicroserviceJob", /* to avoid using same hub name by different durable functions*/
+      "tracing": {
+        "distributedTracingEnabled": true,
+        "distributedTracingProtocol": "W3CTraceContext" /* to enable app insight tracing for durable functions.*/
+      }
+    }
+  }
+}

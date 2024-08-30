@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+      <CodeAnalysisRuleSet>..\..\..\..\stylecoprules\stylecop.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="Lueben.Microservice.Mediator" Version="2.0.1" />
+    <PackageReference Include="Lueben.Microservice.EntityFunction" Version="2.0.2" />
+<!--#if (Sql)-->
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.14" />
+<!--#endif (Sql)-->
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Domain\Lueben.Templates.Microservice.Domain\Lueben.Templates.Microservice.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

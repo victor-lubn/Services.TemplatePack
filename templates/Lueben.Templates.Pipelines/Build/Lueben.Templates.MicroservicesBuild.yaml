@@ -1,0 +1,108 @@
+parameters:
+- name: gitversion  # defaults for any parameters that aren't specified
+  default: '5.x'
+- name: solutionName
+  default: ''
+- name: appName
+  type: string
+  default: ''
+- name: ProjectsForTests
+  type: string
+  default: 'tests/**/*.csproj'
+- name: TestSettingsPath
+  type: string
+  default: 'tests/CodeCoverage.runsettings'
+- name: ListOfFunctions
+  type: object
+  default: {}
+- name: ListOfFunctionConfigs
+  type: object
+  default: {}
+
+steps:
+
+# gitversion setup steps
+- task: gitversion/setup@0 
+  inputs:
+    versionSpec: ${{ parameters.gitversion }}
+
+- task: gitversion/execute@0
+  inputs:
+    updateAssemblyInfo: false
+
+# nuget related steps
+- task: NuGetToolInstaller@1
+- task: NuGetAuthenticate@1
+- task: NuGetCommand@2
+  displayName: 'NuGet restore'
+  inputs:
+    command: 'restore'
+    restoreSolution: '${{ parameters.solutionName }}'
+    feedsToUse: 'config'
+    nugetConfigPath: 'nuget.config'
+
+# build step
+- task: VSBuild@1
+  displayName: 'Build solution ${{ parameters.solutionName }}'
+  inputs:
+    solution: ${{ parameters.solutionName }}
+    platform: 'Any CPU'
+    configuration: release
+
+# Unit tests
+- task: DotNetCoreCLI@2
+  displayName: 'Unit Tests ${{ parameters.appName }}'
+  inputs:
+    command: test
+    projects: '${{ parameters.ProjectsForTests }}'
+    arguments: '--settings "${{ parameters.TestSettingsPath }}" --collect "XPlat Code coverage"'
+    testRunTitle: '${{ parameters.appName }}'
+
+# Code coverage
+- task: CmdLine@2
+  displayName: 'CodeCoverage: Install ReportGenerator tool'
+  inputs:
+    script: dotnet tool install --global dotnet-reportgenerator-globaltool --version 4.7.1
+
+- task: CmdLine@2
+  displayName: 'CodeCoverage: Create reports'
+  inputs:
+    script: reportgenerator -reports:$(Agent.TempDirectory)/**/coverage.cobertura.xml -targetdir:$(Build.SourcesDirectory)/coverlet/reports -reporttypes:"Cobertura"
+
+- task: PublishCodeCoverageResults@1
+  displayName: 'CodeCoverage: Publish code coverage report'
+  inputs:
+    codeCoverageTool: Cobertura
+    summaryFileLocation: $(Build.SourcesDirectory)/coverlet/reports/Cobertura.xml
+
+# Artifacts preparation
+- ${{ each value in parameters.ListOfFunctions }}:
+  - task: ArchiveFiles@2
+    displayName: 'Archive ${{ value.name }} function files'
+    inputs:
+      rootFolderOrFile: '${{ value.path }}\bin\Release\netcoreapp3.1\'
+      includeRootFolder: false
+      archiveFile: '$(Build.ArtifactStagingDirectory)/${{ value.name }}.zip'
+    enabled: true
+
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact: ${{ value.name }} Function'
+    inputs:
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)/${{ value.name }}.zip'
+      ArtifactName: '${{ value.artifactName }}'
+    enabled: true
+
+- ${{ each value in parameters.ListOfFunctionConfigs }}:
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact: ${{ value.name }} Function App config file'
+    inputs:
+      PathtoPublish: '${{ value.path }}\App_configuration.json'
+      ArtifactName: '${{ value.artifactName }}'
+    enabled: true
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: powershell scripts'
+  inputs:
+    PathtoPublish: 'deployment\scripts'
+    ArtifactName: 'scripts'
+  enabled: true

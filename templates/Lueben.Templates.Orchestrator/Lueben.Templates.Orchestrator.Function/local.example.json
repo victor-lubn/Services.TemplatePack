@@ -1,0 +1,39 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+
+    "APPINSIGHTS_INSTRUMENTATIONKEY": "<instrumentation key>",
+    "AzureFunctionsJobHost__Logging__LogLevel__Default": "Information",
+    "AzureFunctionsJobHost__Logging__LogLevel__Lueben": "Information",
+
+    "EventHubName": "<eventhubname>",
+    "EventHubConnectionString": "<connectionString>",
+
+    "WorkflowOptions:MaxEventRetryCount": "3",
+    "WorkflowOptions:ActivityRetryAttempts": "2",
+
+    "ApplicationLogOptions:ApplicationType": "MS",
+    "ApplicationLogOptions:Application": "Templates",
+    "ApplicationLogOptions:Area": "ORCH",
+
+    //"WorkflowHealthCheckOptions:MaxDaysSinceLastUpdated": 7, //uncomment to override default value
+
+    "AzureAppConfigurationEndPoint": "https://ahappconfiguration.azconfig.io",
+
+    //Example handler options
+    "HttpEventHandlerOptions:eventType1:ServiceUrl": "https://Luebeneventingserviceapplicationstatusfunction.azurewebsites.net/api/applicationStatus",
+    "HttpEventHandlerOptions:eventType1:HealthCheckUrl": "https://Luebeneventingserviceapplicationstatusfunction.azurewebsites.net/version",
+    "HttpEventHandlerOptions:eventType1:FunctionKey": "",
+    "HttpEventHandlerOptions:eventType2:ServiceUrl": "https://Luebeneventingserviceemailfunction.azurewebsites.net/api/emailservice",
+    "HttpEventHandlerOptions:eventType2:HealthCheckUrl": "https://Luebeneventingserviceemailfunction.azurewebsites.net/version",
+    "HttpEventHandlerOptions:eventType2:FunctionKey": "",
+
+    // example of Durable function cleanup job configuration
+    "DurableFunctionHistoryCleanUpTimerScheduleExpression": "0 0 1 * * *",
+    "DurableFunctionHistoryCleanUpOptions:HistoryExpirationDays": "30",
+    "DurableFunctionHistoryCleanUpOptions:PurgeHistoryBatchTimeFrameHours": "12",
+    "DurableFunctionHistoryCleanUpOptions:MaxHistoryAgeMonths": "12"
+  }
+}

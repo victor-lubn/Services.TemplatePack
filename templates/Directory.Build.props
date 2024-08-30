@@ -1,0 +1,30 @@
+<Project>
+  <PropertyGroup>
+    <Product>Lueben.Template</Product>
+    <Company>Lueben Joinery Ltd</Company>
+    <Copyright>Copyright © Lueben</Copyright>
+    <Trademark>Lueben Joinery Ltd</Trademark>
+    <AssemblyVersion>1.0.0</AssemblyVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <!-- .NET analyzers are enabled by default in .NET 5.0 projects. There is no need to add this property to .NET 5.0 projects -->
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <!--
+      Microsoft documentation contains an error: the default value for AnalysisLevel is not equal to 5 (latest) for netcoreapp3.1 projects.
+      Details: https://devblogs.microsoft.com/dotnet/automatically-find-latent-bugs-in-your-code-with-net-5/
+    -->
+    <AnalysisLevel>latest</AnalysisLevel>
+    <!--
+      Uncomment this setting to enable all the applicable CA rules as build warnings by default.
+      If enabled, AnytimeOrdering.sln build takes extra 15 seconds.
+    -->
+    <!--<AnalysisMode>AllEnabledByDefault</AnalysisMode>-->
+    <CodeAnalysisRuleSet>$(SolutionDir)\stylecoprules\stylecop.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+</Project>

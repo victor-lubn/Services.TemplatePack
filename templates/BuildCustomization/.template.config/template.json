@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Lueben",
+  "classifications": [ "Lueben","Microservice","Build" ],
+  "identity": "Lueben.Template.Build",
+  "name": "Build customization",
+  "shortName": "hwnmsbuild",
+  "tags": {
+    "type": "item"
+  },
+  "symbols": {
+    "title": {
+      "type": "parameter",
+      "defaultValue": "Template",
+      "replaces": "Lueben.Template"
+    }
+  }
+}

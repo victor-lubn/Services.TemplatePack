@@ -1,0 +1,22 @@
+﻿{
+  "IsEncrypted": false,
+  "Values": {
+    "IsDevelopmentMode": false,
+    "AzureAppConfigurationEndPoint": "https://ahappconfiguration.azconfig.io", // Change to the correct app configuration service endpoint
+
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+    "FileLogOptions:LogFilePath": "C:\\apitemplate.log",
+    "FileLogOptions:LogFileSizeLimitBytes": 10485760,
+    //#if (Cosmos)
+    "RepositoryOptions:CosmosConnectionString": "",
+    "RepositoryOptions:DatabaseId": "test",
+    "RepositoryOptions:ContainerId": "test"
+    //#endif
+  },
+  //#if(Sql)
+  "ConnectionStrings": {
+    "LuebenContext": ""
+  }
+  //#endif
+}

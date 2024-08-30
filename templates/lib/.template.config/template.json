@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Lueben",
+  "classifications": [ "Lueben", "Microservice","Stub" ],
+  "identity": "Lueben.Template.Stubdll",
+  "name": "Lueben stubs assembly",
+  "shortName": "hwnstubdll",
+  "tags": {
+    "language": "C#",
+    "type": "item"
+  }
+}

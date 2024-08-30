@@ -1,0 +1,32 @@
+####################---GENERAL SETTINGS---####################
+
+name: $(TeamProject)_$(Build.DefinitionName)_$(Rev:r)
+
+trigger:
+ batch: true
+ branches:
+  include:
+    - master
+    - develop
+
+pool:
+  vmImage: windows-2022
+
+####################---GENERAL SETTINGS---####################
+
+
+
+####################---GIT VERSION---####################
+
+steps:
+- task: gitversion/setup@0
+  displayName: 'Install Git Version'
+  inputs:
+    versionSpec: '5.x'
+
+- task: gitversion/execute@0
+  displayName: 'Execute Git Version'
+  inputs:
+    updateAssemblyInfo: false
+
+####################---GIT VERSION---####################

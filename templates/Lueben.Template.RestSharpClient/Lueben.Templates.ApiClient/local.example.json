@@ -1,0 +1,19 @@
+{
+  //should be added to the app settings of the service that uses ApiClient
+
+  "ApiOptions:BaseUrl": "%ApiBaseUrl%",
+
+  "RestSharpClientOptions:ApiClient:CircuitBreakerId": "ApiClient",
+
+  "RestSharpClientOptions:ApiClient:FunctionKey": "KeyVault:%KeyvaultKeyUrl%",
+  "RestSharpClientOptions:ApiClient:ApiVersion": "v1",
+
+  //specify function key or scope depends on the authorization type
+  "RestSharpClientOptions:ApiClient:Scope": "%scope%",
+
+  "AzureAd:ClientId": "%ClientId%",
+  "AzureAd:ClientSecret": "%ClientSecret%",
+  "AzureAd:TenantId": "%TenantId%"
+
+
+}

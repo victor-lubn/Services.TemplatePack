@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Lueben",
+  "classifications": [ "Lueben","Microservice","Packages" ],
+  "identity": "Lueben.Template.Nuget",
+  "name": "Microservice nuget configuration",
+  "shortName": "hwnmsnuget",
+  "tags": {
+    "type": "item"
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Lueben",
+  "classifications": ["Lueben","Microservices","Orchestrator"], 
+  "name": "Orchestrator",
+  "identity": "Lueben.Templates.Orchestrator",         
+  "groupIdentity":"Lueben.Templates.Orchestrator",
+  "shortName": "hwnorch",
+  "tags": {
+    "language": "C#",
+    "type":"project"
+  },
+  "sourceName": "Lueben.Templates.Orchestrator",
+  "preferNameDirectory": true,
+  "primaryOutputs": [
+    {
+      "path": "Lueben.Templates.Orchestrator.Function/Lueben.Templates.Orchestrator.Function.csproj"
+    },
+    {
+      "path": "Lueben.Templates.Orchestrator.Handlers/Lueben.Templates.Orchestrator.Handlers.csproj"
+    },
+    {
+      "path": "Lueben.Templates.Orchestrator.Function.Tests/Lueben.Templates.Orchestrator.Function.Tests.csproj"
+    }
+  ],
+  "symbols":{
+    "includetests": {
+        "type": "parameter",
+        "datatype": "bool",
+        "defaultValue": "true"
+    }
+  },
+  "sources":[{
+    "modifiers": [
+      {
+        "condition": "(!includetests)",
+        "exclude": ["*.Tests/**/*"]
+      },
+      {
+        "exclude": [".vs/**", "*.user"]
+      }
+    ]
+  }],
+  "postActions": [
+    {
+      "description": "Add projects to solution",
+      "manualInstructions": [
+        {
+          "text": "Run post action 'Add projects to a solution file'"
+        }
+      ],
+      "args": {
+        "primaryOutputIndexes": "0;1;2"
+      },
+      "actionId": "D396686C-DE0E-4DE6-906D-291CD29FC5DE",
+      "continueOnError": true
+    }
+  ]
+}

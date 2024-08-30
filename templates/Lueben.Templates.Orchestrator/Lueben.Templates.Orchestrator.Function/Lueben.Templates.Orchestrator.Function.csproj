@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <AzureFunctionsVersion>v4</AzureFunctionsVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Lueben.Microservice.ApplicationInsights" Version="3.0.3" />
+    <PackageReference Include="Lueben.Microservice.DurableFunction.HealthCheck" Version="2.0.2" />
+    <PackageReference Include="Lueben.Microservice.DurableHttpRouteFunction" Version="2.0.3" />
+    <PackageReference Include="Lueben.Microservice.DurableFunction.CleanUp" Version="2.0.2" />
+    <PackageReference Include="Lueben.Microservice.EventHub.HealthCheck" Version="2.0.2" />
+    <PackageReference Include="Lueben.Microservice.Extensions.Configuration" Version="2.0.1" />
+    <PackageReference Include="Lueben.Microservice.HealthChecks" Version="2.0.2" />
+    <PackageReference Include="Lueben.Microservice.Options" Version="2.0.1" />
+    <PackageReference Include="Lueben.Microservice.Serialization" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Azure.Functions.Extensions" Version="1.1.0" />
+    <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.DurableTask" Version="2.8.1" />
+    <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.EventHubs" Version="5.1.2" />
+    <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="4.1.3" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="6.0.0">
+      <NoWarn>NU1605</NoWarn>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Lueben.Templates.Orchestrator.Handlers\Lueben.Templates.Orchestrator.Handlers.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="host.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="local.example.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+    </None>
+    <None Update="local.settings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+    </None>
+  </ItemGroup>
+</Project>

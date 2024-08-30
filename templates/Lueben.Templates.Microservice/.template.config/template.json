@@ -1,0 +1,118 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Lueben",
+  "classifications": ["Lueben","Microservices","Api"], 
+  "name": "Api",
+  "identity": "Lueben.Templates.Microservice",         
+  "groupIdentity":"Lueben.Templates.Microservice",
+  "shortName": "hwnapi",
+  "tags": {"language": "C#","type":"project"},
+  "sourceName": "Lueben.Templates.Microservice",
+  "preferNameDirectory": true,
+  "primaryOutputs": [
+    {
+      "path": "src/Application/Lueben.Templates.Microservice.Api/Lueben.Templates.Microservice.Api.csproj"
+    },
+    {
+      "path": "src/Application/Lueben.Templates.Microservice.App/Lueben.Templates.Microservice.App.csproj"
+    },
+    {
+      "path": "src/Application/Lueben.Templates.Microservice.Api.Contract/Lueben.Templates.Microservice.Api.Contract.csproj"
+    },
+    {
+      "path": "src/Domain/Lueben.Templates.Microservice.Domain/Lueben.Templates.Microservice.Domain.csproj"
+    },
+    {
+      "path": "src/Common/Lueben.Templates.Microservice.Functions.Logging/Lueben.Templates.Microservice.Functions.Logging.csproj"
+    },
+    {
+      "path": "tests/Lueben.Templates.Microservice.Api.Tests/Lueben.Templates.Microservice.Api.Tests.csproj"
+    },
+    {
+      "path": "src/Application/Lueben.Templates.Microservice.Data.Sql/Lueben.Templates.Microservice.Data.Sql.csproj"
+    },
+    {
+      "path": "tests/Lueben.Templates.Microservice.App.Tests.Sql/Lueben.Templates.Microservice.App.Tests.Sql.csproj"
+    },
+    {
+      "path": "src/Application/Lueben.Templates.Microservice.Data.CosmosDb/Lueben.Templates.Microservice.Data.CosmosDb.csproj"
+    },
+    {
+      "path": "tests/Lueben.Templates.Microservice.App.Tests.Cosmos/Lueben.Templates.Microservice.App.Tests.Cosmos.csproj"
+    }
+  ],
+  "symbols":{
+    "includetests": {
+        "type": "parameter",
+        "datatype": "bool",
+        "defaultValue": "true"
+    },  
+  "db":{
+      "type":"parameter",
+      "datatype": "choice",
+      "defaultValue":"sql",
+      "choices": [
+        {
+          "choice": "sql",
+          "description": "sql database"
+        },
+        {
+          "choice": "cosmos",
+          "description":"cosmos database"
+        }
+      ]      
+    },
+    "Cosmos": {
+      "type": "computed",
+      "value": "(db == \"cosmos\")"
+    },
+    "Sql": {
+      "type": "computed",
+      "value": "(db == \"sql\")"
+    }
+  },
+  "sources":[{
+    "modifiers": [
+      {
+        "condition": "(!includetests)",
+        "exclude": ["*.Tests/**/*"]
+      },
+      {
+        "condition": "(!Sql)",
+        "exclude": ["**/*Sql.cs","**/*Sql*/**"]
+      },
+      {
+        "condition": "(!Cosmos)",
+        "exclude": ["**/*Cosmos.cs","**/*Cosmos*/**"]
+      },
+      {
+        "exclude": [".vs/**", "*.user", "*.sln"]
+      }
+    ]
+  }],
+ "postActions": [
+    {
+      "description": "Add projects to solution",
+      "manualInstructions": [{"text": "Run post action 'Add common projects to a solution file'"}],
+      "args": {"primaryOutputIndexes": "0;1;2;3;4;5"},
+      "actionId": "D396686C-DE0E-4DE6-906D-291CD29FC5DE",
+      "continueOnError": true
+    },
+    {
+      "condition": "(Sql)",
+      "description": "Add projects to solution",
+      "manualInstructions": [{"text": "Run post action 'Add sql data project to a solution file'"}],
+      "args": {"primaryOutputIndexes": "6;7"},
+      "actionId": "D396686C-DE0E-4DE6-906D-291CD29FC5DE",
+      "continueOnError": true
+    },
+    {
+      "condition": "(Cosmos)",
+      "description": "Add projects to solution",
+      "manualInstructions": [{"text": "Run post action 'Add cosmos data project to a solution file'"}],
+      "args": {"primaryOutputIndexes": "8;9"},
+      "actionId": "D396686C-DE0E-4DE6-906D-291CD29FC5DE",
+      "continueOnError": true
+    }
+  ]
+}

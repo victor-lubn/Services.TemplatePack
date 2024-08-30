@@ -1,0 +1,31 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+
+    "APPINSIGHTS_INSTRUMENTATIONKEY": "76e9c11e-0177-44e5-917a-fb6d4e6ff8c0",
+
+    // app insight logging settings
+    "ApplicationLogOptions:LogLevel": "Debug",
+
+    "ApplicationLogOptions:ApplicationType": "MS",
+    "ApplicationLogOptions:Application": "Template",
+    "ApplicationLogOptions:Area": "JOB",
+
+    "JobOptions:BatchCount": 100,
+
+    "Schedule": "0 0 0 */1 * *",
+
+    "WorkflowOptions:MaxEventRetryCount": 2, // for prod environment this setting is usually 0 what mean infinite number of retries
+
+    "WorkflowHealthCheckOptions:MaxDaysSinceLastUpdated": 7, //example of health check configuration
+
+    // example of Durable function cleanup job configuration
+    "DurableFunctionHistoryCleanUpTimerScheduleExpression": "0 0 1 * * *",
+    "DurableFunctionHistoryCleanUpOptions:HistoryExpirationDays": "30",
+    "DurableFunctionHistoryCleanUpOptions:PurgeHistoryBatchTimeFrameHours": "12",
+    "DurableFunctionHistoryCleanUpOptions:MaxHistoryAgeMonths": "12"
+  }
+}
