@@ -1,6 +1,6 @@
 # Azure Functions Service Template
 
-In this solution are used nuget libriries from [Microservice.Core](https://github.com/victor-lubn/Microservice.Core).
+In this solution are used nuget libriries from [Microservice.Core](https://github.com/victor-lubn/Lueben.ServiceCorLib).
 
 This repository contains a Visual Studio template designed to create different types of Azure Function services, including API, Job, Durable, and Orchestrator services. This template serves as a starting point for new services, providing the appropriate structure, dependencies, and [Microservices.Core](https://github.com/victor-lubn/Microservice.Core) libriries.
 
